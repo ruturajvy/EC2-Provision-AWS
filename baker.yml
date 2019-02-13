@@ -1,0 +1,5 @@
+name: cm-server
+vm:
+  ip: 192.168.77.10
+tools:
+  - ansible
