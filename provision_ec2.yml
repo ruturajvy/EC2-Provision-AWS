@@ -1,0 +1,17 @@
+---
+ - hosts: localhost
+   become: true
+   tasks:
+     - name: Install pip package manager
+       apt: pkg=python-pip state=latest update_cache=yes
+     - name: Install boto3 python module
+       pip: name=boto3
+     - name: Provision an EC2 instance as the Jenkins build server
+       shell: python main.py
+       become: false
+     - name: Change private key permissions
+       file: 
+         path: /home/ruturaj/Project/DevOps-Key.pem
+         mode: 0600
+         
+       
